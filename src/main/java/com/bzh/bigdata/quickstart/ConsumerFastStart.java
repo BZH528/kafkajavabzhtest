@@ -8,6 +8,9 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 
+/**
+ * create on 2020-1014
+ */
 public class ConsumerFastStart {
 
     public static final String brokerList = "192.168.1.221:9092";
