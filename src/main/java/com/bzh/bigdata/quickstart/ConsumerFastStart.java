@@ -1,8 +1,11 @@
 package com.bzh.bigdata.quickstart;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -19,11 +22,11 @@ public class ConsumerFastStart {
 
     public static void main(String[] args) {
         Properties properties = new Properties();
-        properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.put("bootstrap.servers", brokerList);
+        properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, brokerList);
         // 设置消费者组的名称
-        properties.put("group.id", groupId);
+        properties.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         // 创建一个消费者客户端实例
         KafkaConsumer<String,String> consumer = new KafkaConsumer<>(properties);
         // 订阅主题
