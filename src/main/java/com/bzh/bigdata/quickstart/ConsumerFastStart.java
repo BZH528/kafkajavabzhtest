@@ -25,6 +25,7 @@ public class ConsumerFastStart {
         properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, brokerList);
+        properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         // 设置消费者组的名称
         properties.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         // 创建一个消费者客户端实例

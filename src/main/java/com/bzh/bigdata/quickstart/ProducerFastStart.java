@@ -24,7 +24,7 @@ public class ProducerFastStart {
         // 配置生产者客户端参数并创建KafkaProducer实例
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
         // 构建所需要发送的消息
-        ProducerRecord<String, String> record = new ProducerRecord<>(topic, "hello,Kafka!20201014 16:07");
+        ProducerRecord<String, String> record = new ProducerRecord<>(topic, "hello,Kafka!202010261150");
         // 发送消息
         try {
             producer.send(record);
