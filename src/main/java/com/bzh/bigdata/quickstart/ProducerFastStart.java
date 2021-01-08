@@ -5,6 +5,8 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 
 /**
@@ -24,7 +26,10 @@ public class ProducerFastStart {
         // 配置生产者客户端参数并创建KafkaProducer实例
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
         // 构建所需要发送的消息
-        ProducerRecord<String, String> record = new ProducerRecord<>(topic, "hello,Kafka!202010261150");
+        LocalDateTime time = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatTimeStr = dateTimeFormatter.format(time);
+        ProducerRecord<String, String> record = new ProducerRecord<>(topic, "aaa", "hello,Kafka!" + formatTimeStr);
         // 发送消息
         try {
             producer.send(record);
